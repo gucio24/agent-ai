@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 
 # Skopiuj plik jar do kontenera
-ARG JAR_FILE=target/*.jar
+ARG JAR_FILE=package/*.jar
 COPY ${JAR_FILE} app.jar
 
 # Ustaw port
