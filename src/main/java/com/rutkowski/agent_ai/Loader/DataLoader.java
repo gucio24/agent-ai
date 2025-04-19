@@ -16,9 +16,14 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 public class DataLoader implements CommandLineRunner {
+
+    public static final String JSON_DIR = "json/";
+    public static final String JSON_EXTENSION = ".json";
 
     private final CollegeRepository collegeRepository;
     private final PersonRepository personRepository;
@@ -35,46 +40,37 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        InputStream inputStreamC = new ClassPathResource("json/uczelnie.json").getInputStream();
-        List<College> listCollege = objectMapper.readValue(inputStreamC, new TypeReference<>() {
+        List<College> collegeList = getList("uczelnie", new TypeReference<>() {
         });
-        collegeRepository.saveAll(listCollege);
+        collegeRepository.saveAll(collegeList);
         System.out.println("Saved collegeList to database!");
 
+        Map<String, College> collegeMap = collegeList.stream().collect(Collectors.toMap(College::getId, college -> college));
 
-        InputStream inputStreamP = new ClassPathResource("json/osoby.json").getInputStream();
-        List<Person> personList = objectMapper.readValue(inputStreamP, new TypeReference<>() {
+        List<Person> personList = getList("osoby", new TypeReference<>() {
         });
+        personList.forEach(p -> p.setCollege(collegeMap.get(p.getUczelnia())));
         personRepository.saveAll(personList);
         System.out.println("Saved personList to database!");
 
-
-        InputStream inputStreamS = new ClassPathResource("json/badania.json").getInputStream();
-        List<Study> studyList = objectMapper.readValue(inputStreamS, new TypeReference<>() {
+        List<Study> studyList = getList("badania", new TypeReference<>() {
         });
+        studyList.forEach(s -> s.setCollege(collegeMap.get(s.getUczelnia())));
         studyRepository.saveAll(studyList);
         System.out.println("Saved studyList to database!");
 
-//        List<College> collegeList = getList("uczelnie");
-//        collegeRepository.saveAll(collegeList);
-//        System.out.println("Saved collegeList to database!");
-//
-//        List<Person> personList = getList("osoby");
-//        personRepository.saveAll(personList);
-//        System.out.println("Saved personList to database!");
-//
-//        List<Study> studyList = getList("badania");
-//        studyRepository.saveAll(studyList);
-//        System.out.println("Saved studyList to database!");
     }
 
-    private <T> List<T> getList(String fileName) throws IOException {
-        InputStream inputStream = new ClassPathResource("json/" + fileName + ".json").getInputStream();
+    private static InputStream getInputStream(String fileName) throws IOException {
+        return new ClassPathResource(JSON_DIR + fileName + JSON_EXTENSION).getInputStream();
+    }
+
+    private <T> T getList(String fileName, TypeReference<T> typeRef) throws IOException {
+        InputStream inputStream = getInputStream(fileName);
 
         return objectMapper.readValue(
                 inputStream,
-                new TypeReference<>() {
-                }
+                typeRef
         );
     }
 }

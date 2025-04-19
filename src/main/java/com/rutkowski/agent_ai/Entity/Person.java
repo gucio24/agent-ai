@@ -2,6 +2,7 @@ package com.rutkowski.agent_ai.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Entity
@@ -13,4 +14,8 @@ public class Person {
     private int wiek;
     private String plec;
     private String uczelnia;
+
+    @ManyToOne
+    private College college;
+
 }
