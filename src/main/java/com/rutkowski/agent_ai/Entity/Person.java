@@ -1,6 +1,7 @@
 package com.rutkowski.agent_ai.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
@@ -15,7 +16,7 @@ public class Person {
     private String plec;
     private String uczelnia;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private College college;
 
 }

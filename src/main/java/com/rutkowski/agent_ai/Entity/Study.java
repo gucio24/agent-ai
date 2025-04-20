@@ -1,6 +1,7 @@
 package com.rutkowski.agent_ai.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
@@ -13,6 +14,6 @@ public class Study {
     private String uczelnia;
     private String sponsor;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private College college;
 }
