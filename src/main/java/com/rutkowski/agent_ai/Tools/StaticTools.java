@@ -9,4 +9,13 @@ public interface StaticTools {
     String DELIMITER_SPACE = DELIMITER + SPACE;
     String CITY = "Toruń";
 
+    String NAME_OUTPUT = "output";
+    String NAME_ACTION = "action";
+    String NAME_VALUE = "value";
+    String NAME_PARAMS = "params";
+
+    String ACTION_USETOOL = "usetool";
+    String ACTION_ANSWER = "answer";
+    String VALUE_TOOL_1 = "tool1";
+    String VALUE_TOOL_2 = "tool2";
 }
