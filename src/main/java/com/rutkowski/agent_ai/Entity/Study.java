@@ -16,4 +16,13 @@ public class Study {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private College college;
+
+    @Override
+    public String toString() {
+        return "Study{" +
+                "nazwa='" + nazwa + '\'' +
+                ", uczelnia='" + uczelnia + '\'' +
+                ", sponsor='" + sponsor + '\'' +
+                '}';
+    }
 }

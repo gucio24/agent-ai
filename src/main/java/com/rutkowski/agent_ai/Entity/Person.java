@@ -19,4 +19,14 @@ public class Person {
     @ManyToOne(fetch = FetchType.LAZY)
     private College college;
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "imie='" + imie + '\'' +
+                ", nazwisko='" + nazwisko + '\'' +
+                ", wiek=" + wiek +
+                ", plec='" + plec + '\'' +
+                ", uczelnia='" + uczelnia + '\'' +
+                '}';
+    }
 }

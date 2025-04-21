@@ -7,4 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class Input {
     private String input;
+    private String params;
 }
