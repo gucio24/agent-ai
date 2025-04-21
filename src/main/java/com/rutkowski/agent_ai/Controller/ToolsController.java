@@ -57,6 +57,31 @@ public class ToolsController {
 
     }
 
+    @PostMapping("/tool3")
+    ResponseEntity<Output> postTool3(@RequestBody Input input) {
+
+        if (input.getInput().startsWith(TEST)) {
+            return ResponseEntity.ok(getOutputResponse(input.getInput()));
+        }
+
+        String txt = personService.getPersonData(input.getParams());
+
+        return ResponseEntity.ok(getOutputResponse(txt));
+    }
+
+    @PostMapping("/tool4")
+    ResponseEntity<Output> postTool4(@RequestBody Input input) {
+
+        if (input.getInput().startsWith(TEST)) {
+            return ResponseEntity.ok(getOutputResponse(input.getInput()));
+        }
+
+        String txt = institutionService.getInstitutionData(input.getParams());
+
+        return ResponseEntity.ok(getOutputResponse(txt));
+
+    }
+
 
     private Output getOutputResponse(String txt) {
         return new Output(txt);
