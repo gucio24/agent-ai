@@ -20,7 +20,7 @@ public class PersonService {
     public String getPersonData(String params) {
         String inputTxt = personRepository.findAll()
                 .stream()
-                .filter(p -> p.getCollege().getMiasto().equals(CITY))
+                .filter(p -> p.getCollege().getId().equals(COLLEGE))
                 .map(p -> p.getImie() + " " + p.getNazwisko())
                 .collect(Collectors.joining(DELIMITER_SPACE));
 

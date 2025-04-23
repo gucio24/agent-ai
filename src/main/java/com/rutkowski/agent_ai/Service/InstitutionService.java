@@ -22,7 +22,7 @@ public class InstitutionService {
 
         String inputTxt = collegeRepository.findAll()
                 .stream()
-                .filter(c -> c.getMiasto().equals(CITY))
+                .filter(c -> c.getId().equals(COLLEGE))
                 .map(c ->
                         c.getNazwa()
                                 + SPACE

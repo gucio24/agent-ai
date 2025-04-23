@@ -8,6 +8,7 @@ public interface StaticTools {
     String DELIMITER = ",";
     String DELIMITER_SPACE = DELIMITER + SPACE;
     String CITY = "Toruń";
+    String COLLEGE = "UNIJAG";
 
     String NAME_OUTPUT = "output";
     String NAME_ACTION = "action";
