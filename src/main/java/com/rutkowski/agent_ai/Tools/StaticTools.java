@@ -10,6 +10,7 @@ public interface StaticTools {
     String CITY = "Toruń";
     String COLLEGE = "UNIJAG";
 
+    String NAME_INPUT = "input";
     String NAME_OUTPUT = "output";
     String NAME_ACTION = "action";
     String NAME_VALUE = "value";
