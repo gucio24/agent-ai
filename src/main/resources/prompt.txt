@@ -1,0 +1,37 @@
+Odpowiedz na pytanie:
+"Wymień członków zespołu prowadzącego badania nad podróżami w czasie na jednej z polskich uczelni. Podaj nazwę tej uczelni oraz sponsora tych badań"
+
+Odpowiedz TYLKO na podstawie danych z narzędzi.
+Wywołuj narzędzia, aż zdobędziesz potrzebną wiedzę.
+
+Możesz skorzystać z narzędzi:
+- tool1 - użyj go gdy potrzebujesz informacji o osobach (np. badaczach, naukowcach).
+- tool2 - użyj gdy gdy chcesz uzyskać informacje o uczelniach lub firmach finansujących badania.
+
+Jeśli znasz odpowiedź, to ją podaj.
+Jeśli chcesz skorzystać z narzędzia, to podaj jego nazwę
+
+Twoja odpowiedź MUSI być w formacie JSON.
+
+<przykład-użycia-narzędzia>
+{
+"action":"usetool",
+"value":"tool1",
+"params":"jakieś parametry"
+}
+</przykład-użycia-narzędzia>
+
+
+<przykład-odpowiedzi>
+{
+"action":"answer",
+"value":"oto odpowiedź na Twoje pytanie",
+"params":"puste"
+}
+</przykład-odpowiedzi>
+
+Action może mieć jedną z dwóch wartości:
+- usetool - gdy chcesz użyć narzędzia (jego nazwę podaj w value, a parametry w params)
+- answer - gdy znasz odpowiedź (params pozostaw puste, a value ma zawierać odpowiedź).
+
+Uwaga! JSON musi zawierać wszystkie podane w przykładzie pola. Nie dodawaj własnych komentarzy ani formatowania Markdown (``` itp.)
